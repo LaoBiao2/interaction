@@ -34,6 +34,9 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  css: [
+    'element-ui/lib/theme-default/index.css',
+  ],
 }
 

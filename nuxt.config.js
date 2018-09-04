@@ -10,7 +10,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: '互动商务' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/common.css' }
     ]
   },
   /*

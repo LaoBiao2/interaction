@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports = {
   /*
   ** Headers of the page
@@ -13,6 +14,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: '/common.css' }
     ]
+    // script: [
+    //     { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
+    // ]
   },
   /*
   ** Customize the progress bar color
@@ -34,7 +38,12 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+          '$': 'jquery'
+        })
+    ]
   },
   plugins: [
     { src: '~/plugins/swiper.js', ssr: false }

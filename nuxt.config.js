@@ -25,7 +25,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -36,5 +36,11 @@ module.exports = {
       }
     }
   },
+  plugins: [
+    { src: '~/plugins/swiper.js', ssr: false }
+  ],
+  css: [
+    'swiper/dist/css/swiper.css'
+  ],
 }
 

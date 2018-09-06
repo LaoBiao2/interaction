@@ -3,44 +3,12 @@
 		<vue-header />
 		<div class="container">
 			<div class="banner">
-				<!-- <div class="swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-                            <div class="content">
-                                <div class="txt">
-                                    <h2><span>互动商务</span>满足你的一切需求</h2>
-                                    <p>一站式服务更放心</p>
-                                    <a href="javascript:;">立即查看</a>
-                                </div>
-                            </div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-                                <div class="txt">
-                                    <h2><span>互动商务</span>满足你的一切需求</h2>
-                                    <p>一站式服务更放心</p>
-                                    <a href="javascript:;">立即查看</a>
-                                </div>
-                            </div>
-						</div>
-						<div class="swiper-slide">
-							<div class="content">
-                                <div class="txt">
-                                    <h2><span>互动商务</span>满足你的一切需求</h2>
-                                    <p>一站式服务更放心</p>
-                                    <a href="javascript:;">立即查看</a>
-                                </div>
-                            </div>
-						</div>
-					</div>
-                    <div class="swiper-pagination"></div>
-				</div> -->
                 <div v-swiper:bannerSwiper="swiperOption">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(banner, key) in 3" :key="key">
                             <div class="content">
                                 <div class="txt">
-                                    <h2><span>互动商务</span>满足你的一切需求</h2>
+                                    <h2><span>互动商务</span>满足你的一切需求{{key}}</h2>
                                     <p>一站式服务更放心</p>
                                     <a href="javascript:;">立即查看</a>
                                 </div>
@@ -70,14 +38,14 @@
                     </li>
                 </ul>
             </div>
-            <!-- <div class="b1 box">
+            <div class="b1 box">
                 <div class="content">
                     <h4>1000余名专业客服持证上岗</h4>
                     <p>「在线客服」与「电话客服」均能完美服务</p>
                     <ul class="clearfix">
                         <li class="li-1 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="../assets/images/index/b1_img1.png" alt=""></i>
+                                <i class="i-img"><img src="~/assets/images/index/b1_img1.png" alt=""></i>
                                 <div class="txt">
                                     <b>网店客服</b>
                                     <span>淘宝、天猫、京东售前 售后客服贴心服务</span>
@@ -89,7 +57,7 @@
                         </li>
                         <li class="li-2 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="../assets/images/index/b1_img2.png" alt=""></i>
+                                <i class="i-img"><img src="~/assets/images/index/b1_img2.png" alt=""></i>
                                 <div class="txt">
                                     <b>电话客服</b>
                                     <span>呼出、呼入、电话客服的 完美服务</span>
@@ -101,7 +69,7 @@
                         </li>
                         <li class="li-3 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="../assets/images/index/b1_img3.png" alt=""></i>
+                                <i class="i-img"><img src="~/assets/images/index/b1_img3.png" alt=""></i>
                                 <div class="txt">
                                     <b>在线客服</b>
                                     <span>QQ、微信、web/app 在线客服轻松搞定</span>
@@ -113,7 +81,7 @@
                         </li>
                         <li class="li-4 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="../assets/images/index/b1_img4.png" alt=""></i>
+                                <i class="i-img"><img src="~/assets/images/index/b1_img4.png" alt=""></i>
                                 <div class="txt">
                                     <b>呼叫中心</b>
                                     <span>提供专业的呼叫中心外 包服务解决方案</span>
@@ -125,7 +93,7 @@
                         </li>
                     </ul>
                 </div>
-            </div> -->
+            </div>
             <div class="b2 box">
                 <h4>客服外包，我们能为您做的</h4>
                 <div class="b2-swiper content">
@@ -221,17 +189,15 @@
                     <h4>新闻资讯</h4>
                     <div class="b5-box clearfix">
                         <div class="fl">
-                            <a href="javascript:;">
-                                <div class="img-box"><img src="../assets/images/index/b5_img.jpg" alt=""></div>
-                                <div class="txt">
-                                    <span class="title-span"><i></i>10年客服老司机教你这样处理棘手的客户投诉</span>
-                                    <span class="time-span"><i></i>8月15日 周三 14:00-17:30</span>
-                                    <p>
-                                        客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。
-                                        <a href="javascript:;">查看更多</a>
-                                    </p>
-                                </div>
-                            </a>
+                            <div class="img-box"><img src="~/assets/images/index/b5_img.jpg" alt=""></div>
+                            <div class="txt">
+                                <span class="title-span"><i></i>10年客服老司机教你这样处理棘手的客户投诉</span>
+                                <span class="time-span"><i></i>8月15日 周三 14:00-17:30</span>
+                                <p>
+                                    客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。
+                                    <a href="javascript:;">查看更多</a>
+                                </p>
+                            </div>
                         </div>
                         <div class="fr">
                             <ul>
@@ -262,20 +228,21 @@
                 </div>
             </div>
 		</div>
+		<vue-footer />
 	</section>
 </template>
 
 <script>
 	import VueHeader from "~/components/VueHeader.vue";
+	import VueFooter from "~/components/VueFooter.vue";
 
 	export default {
         data() {
             return {
                 swiperOption: {
+                    effect : 'fade',
                     pagination: '.swiper-pagination',
-                    slidesPerView: 1,
-                    paginationClickable: true,
-                    spaceBetween: 30,
+                    paginationClickable :true,
                     loop: true
                 },
                 swiperOption2: {
@@ -334,6 +301,7 @@
         },
 		components: {
             VueHeader,
+            VueFooter,
 		},
 		mounted() {
             $(".b1 ul li .i-btn").click(function () {
@@ -343,14 +311,14 @@
                 $(this).parent().parent().toggleClass("up")
             })
             // setTimeout(() = {
-            //     this.banners.push('../assets/images/index/banner.jpg')
+            //     this.banners.push('~/assets/images/index/banner.jpg')
             //     console.log('banners update')
             // }, 3000)>
             // console.log(
             //     'This is current swiper instance object', this.bannerSwiper, 
             //     'It will slideTo banners 3')
-            this.bannerSwiper.slideTo(0, 1000, false)
-            this.b2Swiper.slideTo(0, 1000, false)
+            // this.bannerSwiper.slideTo(0, 1000, false)
+            // this.b2Swiper.slideTo(0, 1000, false)
 		},
         method: {
         }
@@ -362,16 +330,15 @@
 .banner {
     width: 100%;
     height: 676px;
-    // height: 0;
-    // overflow: hidden;
-    background: url(../assets/images/index/banner.jpg);
+    // background: url(~/assets/images/index/banner.jpg);
     .swiper-container {
         height: 100%;
         .swiper-slide {
-            background: url(../assets/images/index/banner.jpg);
+            background: url(~/assets/images/index/banner.jpg);
         }
         .swiper-pagination-bullets {
-            bottom: 100px;
+            bottom: 110px;
+            z-index: 20;
             .swiper-pagination-bullet {
                 width: 46px;
                 height: 4px;
@@ -414,7 +381,7 @@
 .banner-bottom {
     height: 222px;
     margin-top: -110px;
-    background: url(../assets/images/index/banner_bottom.png) no-repeat center;
+    background: url(~/assets/images/index/banner_bottom.png) no-repeat center;
     position: relative;
     z-index: 11;
     ul {
@@ -433,7 +400,7 @@
                 width: 58px;
                 height: 52px;
                 margin: 16px auto;
-                background: url(../assets/images/index/index_icon.png) -4px 0 no-repeat;
+                background: url(~/assets/images/index/index_icon.png) -4px 0 no-repeat;
             }
             span {
                 font-size: 18px;
@@ -489,7 +456,7 @@
         li {
             width: 323px;
             min-height: 368px;
-            background: url(../assets/images/index/b1_img_bg.png) no-repeat bottom;
+            background: url(~/assets/images/index/b1_img_bg.png) no-repeat bottom;
             padding: 24px 24px 41px;
             box-sizing: border-box;
             margin-left: -32px;
@@ -505,7 +472,7 @@
                     width: 275px;
                     height: 119px;
                     display: block;
-                    // background: url(../assets/images/index/b1_img1.png) no-repeat center;
+                    // background: url(~/assets/images/index/b1_img1.png) no-repeat center;
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -544,7 +511,7 @@
                     height: 59px;
                     display: inline-block;
                     border-radius: 50%;
-                    background: url(../assets/images/index/index_icon.png) -192px -391px no-repeat;
+                    background: url(~/assets/images/index/index_icon.png) -192px -391px no-repeat;
                     position: absolute;
                     bottom: -20px;
                     left: 50%;
@@ -602,55 +569,52 @@
         .swiper-button-prev, .swiper-button-next {
             width: 59px;
             height: 59px;
-            background: url(../assets/images/index/index_icon.png) -263px -365px;
+            background: url(~/assets/images/index/index_icon.png) -263px -365px;
         }
-                i {
-                    width: 84px;
-                    height: 78px;
-                    display: block;
-                    margin: 0 auto 25px;
-                    background: url(../assets/images/index/index_icon.png) 0 -133px;
-                }
-                b {
-                    font-size: 20px;
-                    color: #333;
-                    display: block;
-                    margin-bottom: 17px;
-                }
-                span {
-                    font-size: 14px;
-                    color: #666;
-                    line-height: 28px;
-                    text-align: justify;
-                    display: block;
-                }
-                .slider-2 {
-                    i {
-                        width: 77px;
-                        background-position-x: -106px;
-                    }
-                }
-                .slider-3 {
-                    i {
-                        width: 76px;
-                        background-position-x: -208px;
-                    }
-                }
-                .slider-4 {
-                    i {
-                        width: 59px;
-                        background-position-x: -319px;
-                    }
-                }
-                .slider-5 {
-                    i {
-                        width: 62px;
-                        background-position-x: -419px;
-                    }
-                }
-        // .swiper-button-prev {
-        //     left: -66px;
-        // }
+        i {
+            width: 84px;
+            height: 78px;
+            display: block;
+            margin: 0 auto 25px;
+            background: url(~/assets/images/index/index_icon.png) 0 -133px;
+        }
+        b {
+            font-size: 20px;
+            color: #333;
+            display: block;
+            margin-bottom: 17px;
+        }
+        span {
+            font-size: 14px;
+            color: #666;
+            line-height: 28px;
+            text-align: justify;
+            display: block;
+        }
+        .slider-2 {
+            i {
+                width: 77px;
+                background-position-x: -106px;
+            }
+        }
+        .slider-3 {
+            i {
+                width: 76px;
+                background-position-x: -208px;
+            }
+        }
+        .slider-4 {
+            i {
+                width: 59px;
+                background-position-x: -319px;
+            }
+        }
+        .slider-5 {
+            i {
+                width: 62px;
+                background-position-x: -419px;
+            }
+        }
         .swiper-button-next {
             background-position-y: -432px;
         }
@@ -663,7 +627,7 @@
 .b3 {
     padding: 62px 0;
     height: 658px;
-    background: url(../assets/images/index/b3_bg.jpg) no-repeat center;
+    background: url(~/assets/images/index/b3_bg.jpg) no-repeat center;
     .content {
         position: relative;
     }
@@ -715,7 +679,7 @@
         width: 518px;
         height: 518px;
         display: inline-block;
-        background: url(../assets/images/index/b3_img.png) no-repeat center;
+        background: url(~/assets/images/index/b3_img.png) no-repeat center;
         position: absolute;
         bottom: 0;
         right: 32px;
@@ -752,7 +716,7 @@
                     width: 42px;
                     height: 43px;
                     display: inline-block;
-                    background: url(../assets/images/index/index_icon.png) -7px -273px no-repeat;
+                    background: url(~/assets/images/index/index_icon.png) -7px -273px no-repeat;
                     vertical-align: middle;
                     margin-right: 22px;
                 }
@@ -856,7 +820,7 @@
                     i {
                         vertical-align: middle;
                         display: inline-block;
-                        background: url(../assets/images/index/index_icon.png) -16px -404px no-repeat;
+                        background: url(~/assets/images/index/index_icon.png) -16px -404px no-repeat;
                     }
                 }
                 .title-span {
@@ -927,7 +891,7 @@
                             width: 15px;
                             height: 15px;
                             display: inline-block;
-                            background: url(../assets/images/index/index_icon.png) -79px -409px no-repeat;
+                            background: url(~/assets/images/index/index_icon.png) -79px -409px no-repeat;
                             margin: 0 16px 0 2px;
                         }
                     }

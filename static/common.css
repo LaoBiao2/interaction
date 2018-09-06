@@ -114,3 +114,7 @@ table {
 .container {
     margin-top: 76px;
 }
+
+body {
+    min-width: 1440px;
+}

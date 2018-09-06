@@ -3,7 +3,7 @@
 		<vue-header />
 		<div class="container">
 			<div class="banner">
-                <img src="../../assets/images/about/banner.jpg" alt="">
+                <img src="~/assets/images/about/banner.jpg" alt="">
 			</div>
             <div class="banner-bottom content">
                 <ul>
@@ -194,7 +194,6 @@
                         year: '2017'
                     }
                 ],
-                notNextTick: true,
                 swiperOption4: {
                     autoplay: 1000,
                     slidesPerView: "auto",
@@ -215,8 +214,8 @@
             $(".b2 ul li p a").click(function () {
                 $(this).parent().parent().toggleClass("up")
             })
-            this.b3Swiper.slideTo(0, 1000, false)
-            this.b4Swiper.slideTo(0, 1000, false)
+            // this.b3Swiper.slideTo(0, 1000, false)
+            // this.b4Swiper.slideTo(0, 1000, false)
 		},
         method: {
         },
@@ -259,7 +258,7 @@
                 width: 54px;
                 height: 59px;
                 margin: 0 auto;
-                background: url(../../assets/images/about/about_icon.png) 0 0 no-repeat;
+                background: url(~/assets/images/about/about_icon.png) 0 0 no-repeat;
             }
             b {
                 font-size: 18px;
@@ -445,7 +444,7 @@
             -webkit-box-shadow: 1px 1px 18px #ccc; 
             -moz-box-shadow: 1px 1px 18px #ccc; 
             box-shadow: 1px 1px 18px #ccc;
-            background: url(../../assets/images/about/about_icon.png) -11px -317px;
+            background: url(~/assets/images/about/about_icon.png) -11px -317px;
             margin-top: -60px;
         }
         .swiper-button-next {
@@ -463,7 +462,7 @@
                 width: 43px;
                 height: 99px;
                 display: inline-block;
-                background: url(../../assets/images/about/about_icon.png) 0 -174px;
+                background: url(~/assets/images/about/about_icon.png) 0 -174px;
                 position: absolute;
                 top: 0;
             }

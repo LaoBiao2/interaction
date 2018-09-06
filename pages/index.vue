@@ -70,7 +70,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="b1 box">
+            <!-- <div class="b1 box">
                 <div class="content">
                     <h4>1000余名专业客服持证上岗</h4>
                     <p>「在线客服」与「电话客服」均能完美服务</p>
@@ -125,7 +125,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
             <div class="b2 box">
                 <h4>客服外包，我们能为您做的</h4>
                 <div class="b2-swiper content">
@@ -221,32 +221,40 @@
                     <h4>新闻资讯</h4>
                     <div class="b5-box clearfix">
                         <div class="fl">
-                            <div class="img-box"><img src="../assets/images/index/b5_img.jpg" alt=""></div>
-                            <div class="txt">
-                                <span class="title-span"><i></i>10年客服老司机教你这样处理棘手的客户投诉</span>
-                                <span class="time-span"><i></i>8月15日 周三 14:00-17:30</span>
-                                <p>
-                                    客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。
-                                    <a href="javascript:;">查看更多</a>
-                                </p>
-                            </div>
+                            <a href="javascript:;">
+                                <div class="img-box"><img src="../assets/images/index/b5_img.jpg" alt=""></div>
+                                <div class="txt">
+                                    <span class="title-span"><i></i>10年客服老司机教你这样处理棘手的客户投诉</span>
+                                    <span class="time-span"><i></i>8月15日 周三 14:00-17:30</span>
+                                    <p>
+                                        客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。
+                                        <a href="javascript:;">查看更多</a>
+                                    </p>
+                                </div>
+                            </a>
                         </div>
                         <div class="fr">
                             <ul>
                                 <li>
-                                    <span class="title-span">服务外包业促粤港澳大湾区城市建设</span>
-                                    <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
-                                    <span class="time-span"><i></i>2018/06/20</span>
+                                    <a href="javascript:;">
+                                        <span class="title-span">服务外包业促粤港澳大湾区城市建设</span>
+                                        <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
+                                        <span class="time-span"><i></i>2018/06/20</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <span class="title-span">呼叫中心管理者的六种角色</span>
-                                    <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
-                                    <span class="time-span"><i></i>2018/06/20</span>
+                                    <a href="javascript:;">
+                                        <span class="title-span">呼叫中心管理者的六种角色</span>
+                                        <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
+                                        <span class="time-span"><i></i>2018/06/20</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <span class="title-span">呼叫中心如何正确衡量通话质量</span>
-                                    <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
-                                    <span class="time-span"><i></i>2018/06/20</span>
+                                    <a href="javascript:;">
+                                        <span class="title-span">呼叫中心如何正确衡量通话质量</span>
+                                        <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
+                                        <span class="time-span"><i></i>2018/06/20</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -264,20 +272,18 @@
         data() {
             return {
                 swiperOption: {
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
+                    pagination: '.swiper-pagination',
+                    slidesPerView: 1,
+                    paginationClickable: true,
+                    spaceBetween: 30,
                     loop: true
                 },
                 swiperOption2: {
                     slidesPerView: "auto",
                     spaceBetween: 42,
                     loop: true,
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
                 },
                 b2Items: [
                     {
@@ -343,11 +349,11 @@
             // console.log(
             //     'This is current swiper instance object', this.bannerSwiper, 
             //     'It will slideTo banners 3')
-            this.bannerSwiper.slideTo(3, 1000, false)
-            this.b2Swiper.slideTo(3, 1000, false)
+            this.bannerSwiper.slideTo(0, 1000, false)
+            this.b2Swiper.slideTo(0, 1000, false)
 		},
         method: {
-        },
+        }
 	};
 
 </script>
@@ -356,40 +362,13 @@
 .banner {
     width: 100%;
     height: 676px;
+    // height: 0;
+    // overflow: hidden;
     background: url(../assets/images/index/banner.jpg);
     .swiper-container {
         height: 100%;
         .swiper-slide {
             background: url(../assets/images/index/banner.jpg);
-            .txt {
-                margin-top: 152px;
-                h2 {
-                    font-size: 52px;
-                    color: #fff;
-                    line-height: 72px;
-                    margin-bottom: 40px;
-                    span {
-                        color: #e91222;
-                        display: block;
-                    }
-                }
-                p {
-                    color: #fff;
-                    font-size: 30px;
-                    margin-bottom: 86px;
-                }
-                a {
-                    width: 160px;
-                    height: 50px;
-                    line-height: 50px;
-                    font-size: 20px;
-                    color: #fff;
-                    text-align: center;
-                    display: block;
-                    border-radius: 25px;
-                    background-color: #e91222;
-                }
-            }
         }
         .swiper-pagination-bullets {
             bottom: 100px;
@@ -399,6 +378,35 @@
                 border-radius: 2px;
                 background-color: #fff;
             }
+        }
+    }
+    .txt {
+        margin-top: 152px;
+        h2 {
+            font-size: 52px;
+            color: #fff;
+            line-height: 72px;
+            margin-bottom: 40px;
+            span {
+                color: #e91222;
+                display: block;
+            }
+        }
+        p {
+            color: #fff;
+            font-size: 30px;
+            margin-bottom: 86px;
+        }
+        a {
+            width: 160px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            display: block;
+            border-radius: 25px;
+            background-color: #e91222;
         }
     }
 }
@@ -577,6 +585,7 @@
     }
     .b2-swiper {
         margin-top: 48px;
+        height: 320px;
         position: relative;
         padding: 0 105px;
         box-sizing: content-box;
@@ -588,6 +597,13 @@
                 background-color: #fff;
                 padding: 26px 26px 32px;
                 box-sizing: border-box;
+            }
+        }
+        .swiper-button-prev, .swiper-button-next {
+            width: 59px;
+            height: 59px;
+            background: url(../assets/images/index/index_icon.png) -263px -365px;
+        }
                 i {
                     width: 84px;
                     height: 78px;
@@ -632,13 +648,6 @@
                         background-position-x: -419px;
                     }
                 }
-            }
-        }
-        .swiper-button-prev, .swiper-button-next {
-            width: 59px;
-            height: 59px;
-            background: url(../assets/images/index/index_icon.png) -263px -365px;
-        }
         // .swiper-button-prev {
         //     left: -66px;
         // }

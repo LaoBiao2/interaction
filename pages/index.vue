@@ -6,6 +6,9 @@
                 <div v-swiper:bannerSwiper="swiperOption">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(banner, key) in 3" :key="key">
+                            <div class="img-bg">
+                                <img src="~/assets/images/index/banner.jpg" alt="">
+                            </div>
                             <div class="content">
                                 <div class="txt">
                                     <h2><span>互动商务</span>满足你的一切需求{{key}}</h2>
@@ -18,8 +21,8 @@
                     <div class="swiper-pagination"></div>
                 </div>
 			</div>
-            <div class="banner-bottom">
-                <ul>
+            <div class="banner-bottom wow flipInX">
+                <ul class="">
                     <li class="li-1">
                         <i></i>
                         <span>专注客户服务商</span>
@@ -45,7 +48,10 @@
                     <ul class="clearfix">
                         <li class="li-1 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="~/assets/images/index/b1_img1.png" alt=""></i>
+                                <span class="span-img">
+                                    <img src="~/assets/images/index/b1_img1.png" alt="">
+                                    <i></i>
+                                    </span>
                                 <div class="txt">
                                     <b>网店客服</b>
                                     <span>淘宝、天猫、京东售前 售后客服贴心服务</span>
@@ -57,7 +63,10 @@
                         </li>
                         <li class="li-2 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="~/assets/images/index/b1_img2.png" alt=""></i>
+                                <span class="span-img">
+                                    <img src="~/assets/images/index/b1_img2.png" alt="">
+                                    <i></i>
+                                    </span>
                                 <div class="txt">
                                     <b>电话客服</b>
                                     <span>呼出、呼入、电话客服的 完美服务</span>
@@ -69,7 +78,10 @@
                         </li>
                         <li class="li-3 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="~/assets/images/index/b1_img3.png" alt=""></i>
+                                <span class="span-img">
+                                    <img src="~/assets/images/index/b1_img3.png" alt="">
+                                    <i></i>
+                                    </span>
                                 <div class="txt">
                                     <b>在线客服</b>
                                     <span>QQ、微信、web/app 在线客服轻松搞定</span>
@@ -81,7 +93,10 @@
                         </li>
                         <li class="li-4 up">
                             <div class="li-box">
-                                <i class="i-img"><img src="~/assets/images/index/b1_img4.png" alt=""></i>
+                                <span class="span-img">
+                                    <img src="~/assets/images/index/b1_img4.png" alt="">
+                                    <i></i>
+                                    </span>
                                 <div class="txt">
                                     <b>呼叫中心</b>
                                     <span>提供专业的呼叫中心外 包服务解决方案</span>
@@ -138,8 +153,8 @@
                     <ul>
                         <li v-for="(b4Item, key, index) in b4Items" v-bind:key="index" v-bind:class="'li-'+ (key+1)">
                             <span class="top-span"><i></i>{{b4Item.title}}</span>
-                            <p class="up" v-html="b4Item.content + '<a href='+'javascript:;'+'>收起</a>'"></p>
-                            <p class="more" v-html="b4Item.content.substring(0,49) + ' … ' + '<a href='+'javascript:;'+'>查看更多</a>'"></p>
+                            <p class="up" v-html="b4Item.content"></p>
+                            <p class="more" v-html="b4Item.content.substring(0,49) + ' … ' + '<a style=' + 'color:#e91222;' + ' href='+'javascript:;'+'>查看更多</a>'"></p>
                         </li>
                         <!-- <li class="li-1">
                             <span class="top-span"><i></i>专业化</span>
@@ -304,10 +319,12 @@
             VueFooter,
 		},
 		mounted() {
+            new WOW().init();
             $(".b1 ul li .i-btn").click(function () {
                 $(this).parent().parent().toggleClass("up");
             })
             $(".b4 ul li p a").click(function () {
+                $(".b4 ul li").removeClass("up");
                 $(this).parent().parent().toggleClass("up")
             })
             // setTimeout(() = {
@@ -326,25 +343,28 @@
 
 </script>
 
-<style lang="scss">
+
+
+<style lang="scss" scoped>
 .banner {
     width: 100%;
     height: 676px;
-    // background: url(~/assets/images/index/banner.jpg);
     .swiper-container {
         height: 100%;
         .swiper-slide {
-            background: url(~/assets/images/index/banner.jpg);
+            position: relative;
         }
-        .swiper-pagination-bullets {
-            bottom: 110px;
-            z-index: 20;
-            .swiper-pagination-bullet {
-                width: 46px;
-                height: 4px;
-                border-radius: 2px;
-                background-color: #fff;
-            }
+    }
+    .img-bg {
+        width: 100%;
+        height: 676px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        img {
+            width: 100%;
+            height: 100%;
         }
     }
     .txt {
@@ -374,6 +394,11 @@
             display: block;
             border-radius: 25px;
             background-color: #e91222;
+            transition: all .3s;
+        }
+        a:hover {
+            width: 180px;
+            margin-left: -10px;
         }
     }
 }
@@ -468,9 +493,9 @@
                 border-radius: 10px;
                 padding-top: 140px;
                 background-color: #fff;
-                i.i-img {
+                span.span-img {
                     width: 275px;
-                    height: 119px;
+                    height: 102px;
                     display: block;
                     // background: url(~/assets/images/index/b1_img1.png) no-repeat center;
                     position: absolute;
@@ -480,6 +505,19 @@
                         width: 100%;
                         height: 100%;
                     }
+                    i {
+                        width: 60px;
+                        height: 60px;
+                        position: absolute;
+                        bottom: -30px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: url(~/assets/images/index/index_icon.png) 0 -519px no-repeat;
+                        display: inline-block;
+                        transition: all .3s;
+                        transform-origin: center center;
+                    }
+
                 }
                 .txt {
                     width: 215px;
@@ -539,6 +577,52 @@
         }
         li:first-child {
             margin-left: 0;
+        }
+        li:hover {
+            transform: translateY(-10px);
+            span.span-img {
+                i {
+                    animation: circle .5s linear;
+                    -webkit-animation: circle .5s linear;
+                }
+            }
+        }
+        @keyframes circle {
+		    from {
+		        transform: translateX(-50%) rotate(0deg);
+		    }
+		    to {
+		        transform: translateX(-50%) rotate(360deg);
+		    }
+        }
+        @-webkit-keyframes circle {
+		    from {
+		        transform: translateX(-50%) rotate(0deg);
+		    }
+		    to {
+		        transform: translateX(-50%) rotate(360deg);
+		    }
+        }
+        li.li-2 {
+            span.span-img {
+                i {
+                    background-position-x: -96px;
+                }
+            }
+        }
+        li.li-3 {
+            span.span-img {
+                i {
+                    background-position-x: -192px;
+                }
+            }
+        }
+        li.li-4 {
+            span.span-img {
+                i {
+                    background-position-x: -288px;
+                }
+            }
         }
     }
 }
@@ -650,9 +734,9 @@
             text-align: center;
             display: block;
             background-color: #e91222;
-            -webkit-box-shadow: 1px 1px 18px #e91222; 
-            -moz-box-shadow: 1px 1px 18px #e91222; 
-            box-shadow: 1px 1px 18px #e91222;
+            -webkit-box-shadow: 1px 4px 18px rgba(233, 18, 34, .5); 
+            -moz-box-shadow: 1px 4px 18px rgba(233, 18, 34, .5); 
+            box-shadow: 1px 4px 18px rgba(233, 18, 34, .5);
             margin-bottom: 36px;
         }
         ul {
@@ -699,15 +783,16 @@
     }
     ul {
         position: relative;
-        height: 525px;
+        height: 532px;
         li {
             width: 374px;
             border-radius: 10px;
             background-color: #fff;
-            padding: 25px 22px 15px 28px;
+            padding: 25px 22px 15px;
             box-sizing: border-box;
             min-height: 198px;
             position: absolute;
+            transition: all .3s;
             .top-span {
                 font-size: 18px;
                 color: #333;
@@ -741,6 +826,12 @@
         }
         li.li-4,.li-5,.li-6 {
             top: 264px;
+        }
+        li:hover {
+            top: -10px;
+        }
+        li.li-4:hover,.li-5:hover,.li-6:hover {
+            top: 254px;
         }
         .li-1,.li-4 {
             left: 0;
@@ -798,9 +889,9 @@
             border-radius: 10px;
             overflow: hidden;
             background-color: #fff;
-             -webkit-box-shadow: 1px 1px 28px #b0b0b0; 
-            -moz-box-shadow: 1px 1px 28px #b0b0b0; 
-            box-shadow: 1px 1px 28px #b0b0b0;
+             -webkit-box-shadow: 1px 1px 28px rgba(176, 176, 176, .5); 
+            -moz-box-shadow: 1px 1px 28px rgba(176, 176, 176, .5); 
+            box-shadow: 1px 1px 28px rgba(176, 176, 176, .5);
             padding-bottom: 30px;
             .img-box {
                 height: 266px;
@@ -898,9 +989,9 @@
                 }
                 li:hover {
                     background-color: #fff;
-                    -webkit-box-shadow: 1px 1px 43px #b0b0b0; 
-                    -moz-box-shadow: 1px 1px 43px #b0b0b0; 
-                    box-shadow: 1px 1px 43px #b0b0b0;
+                    -webkit-box-shadow: 1px 1px 43px rgba(176, 176, 176, .5); 
+                    -moz-box-shadow: 1px 1px 43px rgba(176, 176, 176, .5); 
+                    box-shadow: 1px 1px 43px rgba(176, 176, 176, .5);
                     .title-span {
                         color: #e91222;
                     }
@@ -910,4 +1001,19 @@
     }
 }
 
+</style>
+
+<style lang="scss">
+.banner {
+    .swiper-pagination-bullets {
+        bottom: 110px;
+        z-index: 20;
+        .swiper-pagination-bullet {
+            width: 46px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: #fff;
+        }
+    }
+}
 </style>

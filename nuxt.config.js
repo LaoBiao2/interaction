@@ -12,11 +12,13 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/common.css' }
+      { rel: 'stylesheet', href: '/common.css' },
+      { rel: 'stylesheet', href: '/animate.css' }
+    ],
+    script: [
+        { type: 'text/javascript', src: '/wow.min.js' }
+        // { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
     ]
-    // script: [
-    //     { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
-    // ]
   },
   /*
   ** Customize the progress bar color

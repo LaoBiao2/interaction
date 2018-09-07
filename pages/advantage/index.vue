@@ -121,10 +121,13 @@ export default {
         return{
             advantageSwiper: {//swiper3
                 // onlyExternal : true,
-                slidesPerView: '4',
+                slidesPerView: 4,
                 pagination: '.swiper-pagination',
-                observer:true,
-                observeParents:true,
+                // observer:true,
+                // observeParents:true,
+                loop: true,
+                autoplay: 1000,
+                spaceBetween: 15,
             },
             data1:true,
             b1Items: [
@@ -163,7 +166,7 @@ export default {
     }
     .swiper-slide{
         width: 300px;
-        margin-right: 15px;
+        // margin-right: 15px;
         i{
             float: left;
             width: 68px;
@@ -299,6 +302,7 @@ export default {
 .b2 {
     text-align: center;
     padding: 55px 0 37px;
+    background-color: #fff;
     h4 {
         font-size: 30px;
         color: #333;

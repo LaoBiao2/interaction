@@ -9,7 +9,7 @@
                         <div class="fl">
                             <ul>
                                 <li v-for="(newsLi, key) in newsList" :key="key">
-                                    <a href="javascript:;" :id="newsLi.newsId" class="clearfix">
+                                    <a href="/news/_id" :id="newsLi.newsId" class="clearfix">
                                         <div class="img-box">
                                             <img :src="newsLi.newsImg" alt="">
                                         </div>
@@ -26,7 +26,7 @@
                             <h6><b>热门推荐</b></h6>
                             <ul>
                                 <li v-for="(hotLi, key) in hotList" :key="key">
-                                    <a href="javascript:;" :id="hotLi.hid">
+                                    <a href="/news/_id" :id="hotLi.hid">
                                         <p>{{hotLi.htitle}}</p>
                                     </a>
                                 </li>
@@ -143,7 +143,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .news {
     padding: 55px 0;
     background-color: #fff;

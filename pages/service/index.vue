@@ -202,6 +202,10 @@ export default {
                     margin: 0 auto 20px auto;
                     height: 55px;
                     background: url(/images/service/flow_icon.png) no-repeat;
+                    transition: all .3s;
+                }
+                i:hover {
+                    transform: translateY(-10px);
                 }
                 .fi1{
                     width: 45px;

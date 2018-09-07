@@ -33,7 +33,7 @@
                 <div class="content">
                     <h4>公司简介</h4>
                     <p class="up" v-html="b1Content"></p>
-                    <p class="more" v-html="b1Content.substring(0,240) + ' … ' + '<a href='+'javascript:;'+'>查看更多</a>'"></p>
+                    <p class="more" v-html="b1Content.substring(0,240) + ' … ' + '<a style=' + 'color:#e91222;' + ' href='+'javascript:;'+'>查看更多</a>'"></p>
                 </div>
             </div>
             <div class="b2 box">
@@ -42,11 +42,11 @@
                     <ul class="clearfix">
                         <li class="" v-for="(b2Item, key) in b2Items" v-bind:key="key" :class="'li-' + (key+1)">
                             <div class="li-box">
-                                <i class="i-img"><img :src="'/images/about/b2_img' + (key+1) + '.png'" alt=""></i>
+                                <span class="span-img"><img :src="'/images/about/b2_img' + (key+1) + '.png'" alt=""><i></i></span>
                                 <div class="txt">
                                     <b>{{b2Item.title}}</b>
                                     <p class="up" v-html="b2Item.content"></p>
-                                    <p class="more" v-html="b2Item.content.substring(0,20) + ' … ' + '<a href='+'javascript:;'+'>查看更多</a>'"></p>
+                                    <p class="more" v-html="b2Item.content.substring(0,20) + ' … ' + '<a style=' + 'color:#e91222;' + ' href='+'javascript:;'+'>查看更多</a>'"></p>
                                 </div>
                                 <a href="javascript:;" class="a-btn">点击查看</a>
                             </div>
@@ -113,7 +113,7 @@
                 <div class="b4-swiper">
                     <div v-swiper:b4Swiper="swiperOption4">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for="(b4Item, key) in 14" :key="key">
+                            <div class="swiper-slide" v-for="(b4Item, key) in 12" :key="key">
                                 <div class="slider">
                                     <img :src="'/images/about/clogo_' + (key+1) + '.jpg' " alt="">
                                 </div>
@@ -226,7 +226,8 @@
 
 </script>
 
-<style lang="scss">
+
+<style lang="scss" scoped>
 .banner {
     width: 100%;
     height: 354px;
@@ -241,9 +242,9 @@
     margin-top: -75px;
     background-color: #fff;
     border-radius: 10px;
-    -webkit-box-shadow: 1px 1px 35px #767676; 
-    -moz-box-shadow: 1px 1px 35px #767676; 
-    box-shadow: 1px 1px 35px #767676;
+    -webkit-box-shadow: 1px 1px 35px rgba(118, 118, 118, .5); 
+    -moz-box-shadow: 1px 1px 35px rgba(118, 118, 118, .5); 
+    box-shadow: 1px 1px 35px rgba(118, 118, 118, .5);
     position: relative;
     z-index: 11;
     ul {
@@ -261,7 +262,7 @@
                 width: 54px;
                 height: 59px;
                 margin: 0 auto;
-                background: url(~/assets/images/about/about_icon.png) 0 0 no-repeat;
+                background: url(~/assets/images/about/about_icon.png) 0 -80px no-repeat;
             }
             b {
                 font-size: 18px;
@@ -294,7 +295,7 @@
         }
         li:hover {
             i {
-                background-position-y: -80px;
+                background-position-y: 0;
             }
         }
     }
@@ -353,9 +354,9 @@
             .li-box {
                 position: relative;
                 padding: 140px 0 23px;
-                i.i-img {
+                span.span-img {
                     width: 275px;
-                    height: 151px;
+                    height: 98px;
                     display: block;
                     position: absolute;
                     top: 0;
@@ -363,6 +364,22 @@
                     img {
                         width: 100%;
                         height: 100%;
+                    }
+                    i {
+                        width: 78px;
+                        height: 78px;
+                        display: inline-block;
+                        background: url(/images/about/about_icon.png) 0 -546px no-repeat;
+                        position: absolute;
+                        bottom: -39px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        transition: all .3s;
+                        transform-origin: center center;
+                        -webkit-box-shadow: 1px 1px 18px #0e6bc2; 
+                        -moz-box-shadow: 1px 1px 18px #0e6bc2; 
+                        box-shadow: 1px 1px 18px #0e6bc2;
+                        border-radius: 50%;
                     }
                 }
                 .txt {
@@ -418,6 +435,62 @@
         li:first-child {
             margin-left: 0;
         }
+        li:hover {
+            span.span-img {
+                i {
+                    animation: circle .5s linear;
+                    -webkit-animation: circle .5s linear;
+                }
+            }
+        }
+        @keyframes circle {
+		    from {
+		        transform: translateX(-50%) rotate(0deg);
+		    }
+		    to {
+		        transform: translateX(-50%) rotate(360deg);
+		    }
+        }
+        @-webkit-keyframes circle {
+		    from {
+		        transform: translateX(-50%) rotate(0deg);
+		    }
+		    to {
+		        transform: translateX(-50%) rotate(360deg);
+		    }
+        }
+        
+
+        li.li-2 {
+            span.span-img {
+                i {
+                    background-position-x: -135px;
+                    -webkit-box-shadow: 1px 1px 18px #adadad; 
+                    -moz-box-shadow: 1px 1px 18px #adadad; 
+                    box-shadow: 1px 1px 18px #adadad;
+                }
+            }
+        }
+        li.li-3 {
+            span.span-img {
+                i {
+                    background-position-x: -269px;
+                    -webkit-box-shadow: 1px 1px 18px #eb2129; 
+                    -moz-box-shadow: 1px 1px 18px #eb2129; 
+                    box-shadow: 1px 1px 18px #eb2129;
+                }
+            }
+        }
+        li.li-4 {
+            span.span-img {
+                i {
+                    background-position-x: -404px;
+                    -webkit-box-shadow: 1px 1px 18px #ec8414; 
+                    -moz-box-shadow: 1px 1px 18px #ec8414; 
+                    box-shadow: 1px 1px 18px #ec8414;
+                }
+            }
+        }
     }
 }
 
@@ -433,11 +506,6 @@
             padding-bottom: 50px;
             .swiper-slide {
                 width: 292px;
-            }
-            .swiper-pagination-bullets {
-                .swiper-pagination-bullet {
-                    background-color: #adadad;
-                }
             }
         }
         .swiper-button-prev, .swiper-button-next {
@@ -535,6 +603,18 @@
             img {
                 width: 100%;
                 height: 100%;
+            }
+        }
+    }
+}
+</style>
+
+<style lang="scss">
+.b3 {
+    .b3-swiper {
+        .swiper-pagination-bullets {
+            .swiper-pagination-bullet {
+                background-color: #adadad;
             }
         }
     }

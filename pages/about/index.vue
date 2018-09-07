@@ -123,11 +123,13 @@
                 </div>
             </div>
 		</div>
+        <vue-footer />
 	</section>
 </template>
 
 <script>
 	import VueHeader from "~/components/VueHeader.vue";
+	import VueFooter from "~/components/VueFooter.vue";
 
 	export default {
         data() {
@@ -205,6 +207,7 @@
         },
 		components: {
             VueHeader,
+            VueFooter,
 		},
 		mounted() {
             $(".b1 p a").click(function () {

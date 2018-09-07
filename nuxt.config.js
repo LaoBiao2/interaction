@@ -51,12 +51,5 @@ module.exports = {
   css: [
     'swiper/dist/css/swiper.css'
   ],
-  "config": {
-
-    "nuxt": {
-        "host": "0.0.0.0",
-        "port": "3000"
-    }
-},
 }
 

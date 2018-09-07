@@ -2,18 +2,32 @@
 	<div class="VueHeader">
 		<div class="content clearfix">
 			<div class="logo">
-				<img src="../assets/images/common/logo.png" alt="">
+				<img src="~/assets/images/common/logo.png" alt="">
 			</div>
 			<ul>
-				<li><a href="javascript:;">首页</a></li>
-				<li><a href="javascript:;">产品服务</a></li>
-				<li><a href="javascript:;">能力优势</a></li>
-				<li><a href="javascript:;">关于我们</a></li>
-				<li><a href="javascript:;">新闻中心</a></li>
+				<li><nuxt-link to="/">首页</nuxt-link></li>
+				<li><nuxt-link to="/service">产品服务</nuxt-link></li>
+				<li><nuxt-link to="/advantage">能力优势</nuxt-link></li>
+				<li><nuxt-link to="/about">关于我们</nuxt-link></li>
+				<li><nuxt-link to="/news">新闻中心</nuxt-link></li>
 			</ul>
 		</div>
 	</div>
 </template>
+
+<script>
+	export default {
+        data(){
+            return {
+            }
+        },
+		mounted() {
+		},
+        methods: {
+        }
+	};
+
+</script>
 
 <style lang="scss">
 .VueHeader {
@@ -39,12 +53,16 @@
 	ul {
 		float: right;
 		li {
+            text-align: center;
 			width: 104px;
 			display: inline-block;
 			line-height: 76px;
 			a {
 				color: #aaaaaa;
 			}
+            a.nuxt-link-exact-active {
+                color: #fff;
+            }
 		}
 		li:hover {
 			a {

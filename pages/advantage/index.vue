@@ -1,115 +1,121 @@
 <template>
-    <div>
-        <div class="banner">
-            <div class="content">
-                <div class="txt">
-                    <h4>因为选择，所以信任</h4>    
-                    <p>互动商务助力企业完善客户关系管理</p>
-                </div>
-            </div>        
-        </div>
-        <div class="advantage">
-            <h4>能力与优势</h4>
-            <div class="content">
-                <div v-swiper:mySwiper="advantageSwiper" v-if="data1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide clearfix">
-                            <i class="ai1"></i>
-                            <div class="txt">
-                                <h5>规模</h5>
-                                <p>四大客服基地千人<br>团队遍及全国</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide clearfix">
-                            <i class="ai2"></i>
-                            <div class="txt">
-                                <h5>经验</h5>
-                                <p>服务千万商家聚焦<br>众多知名品牌</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide clearfix">
-                            <i class="ai3"></i>
-                            <div class="txt">
-                                <h5>全面</h5>
-                                <p>业务涵盖客服、管理<br>培训等多个维度</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide clearfix">
-                            <i class="ai4"></i>
-                            <div class="txt">
-                                <h5>专业</h5>
-                                <p>ISO质量管理体系认证<br>多年获得阿里官方荣誉</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide clearfix">
-                            <i class="ai5"></i>
-                            <div class="txt">
-                                <h5>管理</h5>
-                                <p>全面实现线上绩效考核<br>真正做到数据化管理</p>
-                            </div>
-                        </div>
+    <section>
+        <vue-header />
+        <div class="container">
+            <div class="banner">
+                <div class="content">
+                    <div class="txt">
+                        <h4>因为选择，所以信任</h4>    
+                        <p>互动商务助力企业完善客户关系管理</p>
                     </div>
-                    <div class="swiper-pagination swiper-pagination-bullets"></div>
-                </div>
+                </div>        
             </div>
-        </div>
-        <div class="b1">
-            <div class="content">
-                <div class="b1-swiper">
-                    <div v-swiper:b1Swiper="swiperOption">
+            <div class="advantage">
+                <h4>能力与优势</h4>
+                <div class="content">
+                    <div v-swiper:mySwiper="advantageSwiper" v-if="data1">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for="(b1Item, key) in b1Items" :key="key">
-                                <div :class="'slider-' + (key+1)" class="slider">
-                                    <i><img :src="'/images/advantage/b1_img' + (key+1) + '.png'" alt=""></i>
-                                    <span>{{b1Item}}</span>
+                            <div class="swiper-slide clearfix">
+                                <i class="ai1"></i>
+                                <div class="txt">
+                                    <h5>规模</h5>
+                                    <p>四大客服基地千人<br>团队遍及全国</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide clearfix">
+                                <i class="ai2"></i>
+                                <div class="txt">
+                                    <h5>经验</h5>
+                                    <p>服务千万商家聚焦<br>众多知名品牌</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide clearfix">
+                                <i class="ai3"></i>
+                                <div class="txt">
+                                    <h5>全面</h5>
+                                    <p>业务涵盖客服、管理<br>培训等多个维度</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide clearfix">
+                                <i class="ai4"></i>
+                                <div class="txt">
+                                    <h5>专业</h5>
+                                    <p>ISO质量管理体系认证<br>多年获得阿里官方荣誉</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide clearfix">
+                                <i class="ai5"></i>
+                                <div class="txt">
+                                    <h5>管理</h5>
+                                    <p>全面实现线上绩效考核<br>真正做到数据化管理</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="txt">
-                        <span>选择互动商务</span>
-                        <b>客服外包的理由</b>
+                        <div class="swiper-pagination swiper-pagination-bullets"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="b2">
-            <div class="content">
-                <h4>服务时间和管理模式</h4>
-                <ul class="ul-1">
-                    <li class="li-1"><i></i>白班</li>
-                    <li class="li-2"><i></i>晚班</li>
-                    <li class="li-3"><i></i>24小时</li>
-                    <li class="li-4"><i></i>临时</li>
-                    <li class="li-5"><i></i>定制</li>
-                </ul>
-                <ul class="ul-2 clearfix">
-                    <li>
-                        <b>标准化管理</b>
-                        <span>内部质量管理部门和组长主管每周抽调客服服务人员的聊天记录，并被照标准进行评估</span>
-                    </li>
-                    <li>
-                        <b>项目激励</b>
-                        <span>每个项目自定义KPI，充分激励成员的积极性，同时每月对每个项目进行考核</span>
-                    </li>
-                    <li>
-                        <b>软件监控</b>
-                        <span>使用相对应的软件对客服人员，进行数据化监控和管理</span>
-                    </li>
-                    <li>
-                        <b>定期研讨培训</b>
-                        <span>定期展开话术讨论，添加问题库，定期培训销售技巧，强化客服销售能力</span>
-                    </li>
-                </ul>
+            <div class="b1">
+                <div class="content">
+                    <div class="b1-swiper">
+                        <div v-swiper:b1Swiper="swiperOption">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" v-for="(b1Item, key) in b1Items" :key="key">
+                                    <div :class="'slider-' + (key+1)" class="slider">
+                                        <i><img :src="'/images/advantage/b1_img' + (key+1) + '.png'" alt=""></i>
+                                        <span>{{b1Item}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="txt">
+                            <span>选择互动商务</span>
+                            <b>客服外包的理由</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="b2">
+                <div class="content">
+                    <h4>服务时间和管理模式</h4>
+                    <ul class="ul-1">
+                        <li class="li-1"><i></i>白班</li>
+                        <li class="li-2"><i></i>晚班</li>
+                        <li class="li-3"><i></i>24小时</li>
+                        <li class="li-4"><i></i>临时</li>
+                        <li class="li-5"><i></i>定制</li>
+                    </ul>
+                    <ul class="ul-2 clearfix">
+                        <li>
+                            <b>标准化管理</b>
+                            <span>内部质量管理部门和组长主管每周抽调客服服务人员的聊天记录，并被照标准进行评估</span>
+                        </li>
+                        <li>
+                            <b>项目激励</b>
+                            <span>每个项目自定义KPI，充分激励成员的积极性，同时每月对每个项目进行考核</span>
+                        </li>
+                        <li>
+                            <b>软件监控</b>
+                            <span>使用相对应的软件对客服人员，进行数据化监控和管理</span>
+                        </li>
+                        <li>
+                            <b>定期研讨培训</b>
+                            <span>定期展开话术讨论，添加问题库，定期培训销售技巧，强化客服销售能力</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+        <vue-footer />
+    </section>
 </template>
 
 <script>
+import VueHeader from "~/components/VueHeader.vue";
+import VueFooter from "~/components/VueFooter.vue";
 export default {
     data(){
         return{
@@ -139,7 +145,11 @@ export default {
         }
     },
     computed: {
-    }
+    },
+    components: {
+        VueHeader,
+        VueFooter,
+    },
 }
 </script>
 

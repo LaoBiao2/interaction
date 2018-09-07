@@ -8,17 +8,17 @@
                     <div class="news-box clearfix">
                         <div class="fl">
                             <ul>
-                                <li v-for="(newsLi, key) in newsList" :key="key">
-                                    <a href="/news/_id" :id="newsLi.newsId" class="clearfix">
-                                        <div class="img-box">
+                                <li v-for="(newsLi, key) in newsList" :key="key" class="clearfix">
+                                    <div class="img-box">
+                                        <nuxt-link :to="'/news/' + newsLi.newsId">
                                             <img :src="newsLi.newsImg" alt="">
-                                        </div>
-                                        <div class="txt">
-                                            <b>{{newsLi.newsTitle}}</b>
-                                            <p>{{newsLi.newsContent}}</p>
-                                            <span><i></i>{{newsLi.newsDate}}</span>
-                                        </div>
-                                    </a>
+                                        </nuxt-link>
+                                    </div>
+                                    <div class="txt">
+                                        <nuxt-link :to="'/news/' + newsLi.newsId"><b>{{newsLi.newsTitle}}</b></nuxt-link>
+                                        <nuxt-link :to="'/news/' + newsLi.newsId"><p>{{newsLi.newsContent}}</p></nuxt-link>
+                                        <span><i></i>{{newsLi.newsDate}}</span>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -26,9 +26,9 @@
                             <h6><b>热门推荐</b></h6>
                             <ul>
                                 <li v-for="(hotLi, key) in hotList" :key="key">
-                                    <a href="/news/_id" :id="hotLi.hid">
+                                    <nuxt-link :to="'/news/' + hotLi.hid">
                                         <p>{{hotLi.htitle}}</p>
-                                    </a>
+                                    </nuxt-link>
                                 </li>
                             </ul>
                         </div>
@@ -184,8 +184,12 @@
                         }
                     }
                     .txt {
+                        width: 494px;
+                        margin-right: 5px;
+                        float: right;
                         b {
                             font-size: 18px;
+                            line-height: 1.1;
                             color: #333;
                             display: block;
                             margin: 10px 0 20px;

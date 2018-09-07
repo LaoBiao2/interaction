@@ -353,7 +353,7 @@
             float: left;
             .li-box {
                 position: relative;
-                padding: 140px 0 23px;
+                padding: 150px 0 23px;
                 span.span-img {
                     width: 275px;
                     height: 98px;
@@ -438,8 +438,8 @@
         li:hover {
             span.span-img {
                 i {
-                    animation: circle .5s linear;
-                    -webkit-animation: circle .5s linear;
+                    animation: circle .25s linear;
+                    -webkit-animation: circle .25s linear;
                 }
             }
         }

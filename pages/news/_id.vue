@@ -70,16 +70,16 @@
                             <h6><b>热门推荐</b></h6>
                             <ul>
                                 <li v-for="(hotLi, key) in hotList" :key="key">
-                                    <a href="/news/_id" :id="hotLi.hid">
+                                    <nuxt-link :to="{ name: 'news', params: {id: hotLi.hid} }">
                                         <p>{{hotLi.htitle}}</p>
-                                    </a>
+                                    </nuxt-link>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="news-nav">
-                        <span class="nav-span"><span>上一篇:</span><a href="javascript:;">服务外包业促粤港澳大湾区城市建设</a></span>
-                        <span class="nav-span"><span>下一篇:</span><a href="javascript:;">呼叫中心如何正确衡量通话质量</a></span>
+                        <span class="nav-span"><span>上一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavPrev.title}}</nuxt-link></span>
+                        <span class="nav-span"><span>下一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavNext.title}}</nuxt-link></span>
                     </div>
                 </div>
             </div>
@@ -109,9 +109,16 @@
                         hid: '4',
                         htitle: '呼叫中心如何正确衡量通话质量'
                     }
-                ]
+                ],
+                newsNavPrev: {
+                    id: '1',
+                    title: '服务外包业促粤港澳大湾区城市建设'
+                },
+                newsNavNext: {
+                    id: '2',
+                    title: '呼叫中心如何正确衡量通话质量'
+                },
             }
-           
         },
 		components: {
             VueHeader,

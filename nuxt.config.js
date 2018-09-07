@@ -48,7 +48,8 @@ module.exports = {
     ]
   },
   plugins: [
-    { src: '~/plugins/swiper.js', ssr: false }
+    { src: '~/plugins/swiper.js', ssr: false },
+    { src: '~/plugins/global.js' }
   ],
   css: [
     'swiper/dist/css/swiper.css'

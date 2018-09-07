@@ -582,8 +582,8 @@
             transform: translateY(-10px);
             span.span-img {
                 i {
-                    animation: circle .5s linear;
-                    -webkit-animation: circle .5s linear;
+                    animation: circle .25s linear;
+                    -webkit-animation: circle .25s linear;
                 }
             }
         }

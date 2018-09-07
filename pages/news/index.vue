@@ -1,6 +1,5 @@
 <template>
 	<section>
-		<vue-header />
 		<div class="container">
 			<div class="news">
                 <div class="content">
@@ -62,14 +61,10 @@
                 </div>
             </div>
 		</div>
-        <vue-footer />
 	</section>
 </template>
 
 <script>
-	import VueHeader from "~/components/VueHeader.vue";
-	import VueFooter from "~/components/VueFooter.vue";
-
 	export default {
         data() {
             return {
@@ -124,10 +119,6 @@
             }
            
         },
-		components: {
-            VueHeader,
-            VueFooter,
-		},
 		mounted() {
             $(".b1 p a").click(function () {
                 $(".b1 .up").css("display", "block");

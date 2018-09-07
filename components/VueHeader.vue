@@ -2,7 +2,7 @@
 	<div class="VueHeader">
 		<div class="content clearfix">
 			<div class="logo">
-				<img src="~/assets/images/common/logo.png" alt="">
+				<nuxt-link to="/"><img src="~/assets/images/common/logo.png" alt=""></nuxt-link>
 			</div>
 			<ul>
 				<li><nuxt-link to="/">首页</nuxt-link></li>

@@ -1,6 +1,5 @@
 <template>
     <section>
-        <vue-header />
         <div class="container">
             <div class="banner">
                 <div class="content">
@@ -82,18 +81,12 @@
                 </div>
             </div>
         </div>
-        <vue-footer />
     </section>
 </template>
 
 <script>
-import VueHeader from "~/components/VueHeader.vue";
-import VueFooter from "~/components/VueFooter.vue";
 export default {
-    components: {
-        VueHeader,
-        VueFooter,
-    },
+    
 };
 </script>
 

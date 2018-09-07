@@ -1,6 +1,5 @@
 <template>
 	<section>
-		<vue-header />
 		<div class="container">
 			<div class="banner">
                 <div v-swiper:bannerSwiper="swiperOption">
@@ -206,7 +205,7 @@
                         <div class="fl">
                             <div class="img-box"><img src="~/assets/images/index/b5_img.jpg" alt=""></div>
                             <div class="txt">
-                                <span class="title-span"><i></i>10年客服老司机教你这样处理棘手的客户投诉</span>
+                                <nuxt-link :to="'/news/' + 1"><span class="title-span"><i></i>10年客服老司机教你这样处理棘手的客户投诉</span></nuxt-link>
                                 <span class="time-span"><i></i>8月15日 周三 14:00-17:30</span>
                                 <p>
                                     客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。
@@ -243,17 +242,17 @@
                 </div>
             </div>
 		</div>
-		<vue-footer />
 	</section>
 </template>
 
 <script>
-	import VueHeader from "~/components/VueHeader.vue";
-	import VueFooter from "~/components/VueFooter.vue";
-
 	export default {
         data() {
             return {
+                detail: {
+                    title: '',
+                    summary: ''
+                },
                 swiperOption: {
                     effect : 'fade',
                     pagination: '.swiper-pagination',
@@ -314,10 +313,9 @@
             }
            
         },
-		components: {
-            VueHeader,
-            VueFooter,
-		},
+        head() {
+            return this.$seo(this.detail.title, this.detail.summary)
+        },
 		mounted() {
             new WOW().init();
             $(".b1 ul li .i-btn").click(function () {
@@ -342,8 +340,6 @@
 	};
 
 </script>
-
-
 
 <style lang="scss" scoped>
 .banner {
@@ -916,6 +912,7 @@
                 }
                 .title-span {
                     font-size: 24px;
+                    line-height: 1.4;
                     i {
                         width: 25px;
                         height: 25px;
@@ -957,6 +954,7 @@
                 width: 560px;
                 text-align: left;
                 li {
+                    width: 560px;
                     border-radius: 10px;
                     padding: 17px 26px 23px 28px;
                     box-sizing: border-box;
@@ -969,11 +967,21 @@
                         font-size: 20px;
                         margin-bottom: 20px;
                         font-weight: bold;
+                        line-height: 1.1;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
+                        display: block;
                     }
                     p {
                         font-size: 14px;
                         color: #666;
                         line-height: 30px;
+                        overflow : hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
                     }
                     .time-span {
                         font-size: 14px;

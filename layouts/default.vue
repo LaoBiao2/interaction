@@ -1,8 +1,23 @@
 <template>
-  <div>
-    <nuxt/>
+    <div>
+		<vue-header />
+        <nuxt/>
+		<vue-footer />
   </div>
 </template>
+
+<script>
+import VueHeader from "~/components/VueHeader.vue";
+import VueFooter from "~/components/VueFooter.vue";
+export default {
+    
+    components: {
+        VueHeader,
+        VueFooter,
+    },
+}
+</script>
+
 
 <style>
 html {

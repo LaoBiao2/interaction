@@ -1,6 +1,5 @@
 <template>
 	<section>
-		<vue-header />
 		<div class="container">
 			<div class="banner">
                 <img src="~/assets/images/about/banner.jpg" alt="">
@@ -123,14 +122,10 @@
                 </div>
             </div>
 		</div>
-        <vue-footer />
 	</section>
 </template>
 
 <script>
-	import VueHeader from "~/components/VueHeader.vue";
-	import VueFooter from "~/components/VueFooter.vue";
-
 	export default {
         data() {
             return {
@@ -205,10 +200,6 @@
             }
            
         },
-		components: {
-            VueHeader,
-            VueFooter,
-		},
 		mounted() {
             $(".b1 p a").click(function () {
                 $(".b1 .up").css("display", "block");

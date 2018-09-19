@@ -31,7 +31,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .VueFooter {
 	width: 100%;
 	height: 155px;

@@ -41,7 +41,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .VueHeader {
 	width: 100%;
 	height: 76px;

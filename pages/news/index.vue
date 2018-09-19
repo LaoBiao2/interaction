@@ -10,7 +10,7 @@
                                 <li v-for="(newsLi, key) in newsList" :key="key" class="clearfix">
                                     <div class="img-box">
                                         <nuxt-link :to="'/news/' + newsLi.id">
-                                            <img :src="newsLi.new_img" alt="">
+                                            <img :src="'http://192.168.1.30:8082' + newsLi.new_img" alt="">
                                         </nuxt-link>
                                     </div>
                                     <div class="txt">
@@ -32,7 +32,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="page-nav">
+                    <!-- <div class="page-nav">
                         <span class="confirm-btn page-btn">
                             <a href="javascript:;">上一页</a>
                         </span>
@@ -57,7 +57,8 @@
                         <span class="confirm-btn page-btn">
                             <a href="javascript:;">确认</a>
                         </span>
-                    </div>
+                    </div> -->
+                    <news-page></news-page>
                 </div>
             </div>
 		</div>
@@ -65,6 +66,7 @@
 </template>
 
 <script>
+import NewsPage from '~/components/NewsPage.vue'
 	export default {
         async asyncData({ app }) {
             let  data  = await app.$axios.$get('/api/news');
@@ -126,7 +128,9 @@
                 ],
                 dataList: []
             }
-           
+        },
+        components: {
+            NewsPage
         },
 		mounted() {
             $(".b1 p a").click(function () {
@@ -272,112 +276,113 @@
             }
         }
     }
+
     /* page */
 
-    .page-nav {
-        margin-top: 47px;
-        padding-bottom: 50px;
-        text-align: center;
-    }
+    // .page-nav {
+    //     margin-top: 47px;
+    //     padding-bottom: 50px;
+    //     text-align: center;
+    // }
 
-    .page-nav ul.pagination {
-        margin: 0 15px;
-    }
+    // .page-nav ul.pagination {
+    //     margin: 0 15px;
+    // }
 
-    .page-nav ul.pagination li {
-        display: inline-block;
-        line-height: 24px;
-        margin-left: 16px;
-    }
+    // .page-nav ul.pagination li {
+    //     display: inline-block;
+    //     line-height: 24px;
+    //     margin-left: 16px;
+    // }
 
-    .page-nav ul.pagination li a {
-        height: 24px;
-        line-height: 24px;
-        display: inline-block;
-        font-size: 16px;
-        color: #999;
-        padding: 0;
-        cursor: pointer !important;
-    }
+    // .page-nav ul.pagination li a {
+    //     height: 24px;
+    //     line-height: 24px;
+    //     display: inline-block;
+    //     font-size: 16px;
+    //     color: #999;
+    //     padding: 0;
+    //     cursor: pointer !important;
+    // }
 
-    .page-nav ul.pagination li:first-child {
-        margin-left: 0;
-    }
+    // .page-nav ul.pagination li:first-child {
+    //     margin-left: 0;
+    // }
 
-    .page-nav ul.pagination li:hover a,
-    .page-nav ul.pagination li.active a {
-        color: #fff;
-        background-color: #e91222;
-        border-color: #e91222;
-    }
+    // .page-nav ul.pagination li:hover a,
+    // .page-nav ul.pagination li.active a {
+    //     color: #fff;
+    //     background-color: #e91222;
+    //     border-color: #e91222;
+    // }
 
-    .page-nav span,
-    .page-nav a {
-        height: 26px;
-        display: inline-block;
-        font-size: 16px;
-        color: #999;
-        line-height: 26px;
-    }
+    // .page-nav span,
+    // .page-nav a {
+    //     height: 26px;
+    //     display: inline-block;
+    //     font-size: 16px;
+    //     color: #999;
+    //     line-height: 26px;
+    // }
 
-    .page-nav ul {
-        font-size: 0;
-        display: inline-block;
-        vertical-align: -7px;
-    }
+    // .page-nav ul {
+    //     font-size: 0;
+    //     display: inline-block;
+    //     vertical-align: -7px;
+    // }
 
-    .page-nav ul li {
-        display: inline-block;
-        margin-left: 16px;
-    }
+    // .page-nav ul li {
+    //     display: inline-block;
+    //     margin-left: 16px;
+    // }
 
-    .page-nav ul li a {
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
-        border: 1px solid #999;
-        border-radius: 50%;
-        overflow: hidden;
-    }
+    // .page-nav ul li a {
+    //     width: 24px;
+    //     height: 24px;
+    //     line-height: 24px;
+    //     border: 1px solid #999;
+    //     border-radius: 50%;
+    //     overflow: hidden;
+    // }
 
-    .page-nav ul li:first-child {
-        margin-left: 0;
-    }
+    // .page-nav ul li:first-child {
+    //     margin-left: 0;
+    // }
 
-    .page-nav ul li:hover a,
-    .page-nav ul li.active a {
-        color: #fff;
-        background-color: #e91222;
-        border-color: #e91222;
-    }
+    // .page-nav ul li:hover a,
+    // .page-nav ul li.active a {
+    //     color: #fff;
+    //     background-color: #e91222;
+    //     border-color: #e91222;
+    // }
 
-    .page-nav span input {
-        width: 46px;
-        height: 24px;
-        border-radius: 10px;
-        border: 1px solid #999;
-        text-align: center;
-        color: #999;
-        font-size: 16px;
-    }
+    // .page-nav span input {
+    //     width: 46px;
+    //     height: 24px;
+    //     border-radius: 10px;
+    //     border: 1px solid #999;
+    //     text-align: center;
+    //     color: #999;
+    //     font-size: 16px;
+    // }
 
-    .page-nav .page-btn {
-        width: 66px;
-        border: 1px solid #999;
-        border-radius: 26px;
-    }
+    // .page-nav .page-btn {
+    //     width: 66px;
+    //     border: 1px solid #999;
+    //     border-radius: 26px;
+    // }
 
-    .page-nav .page-btn:hover {
-        background-color: #e91222;
-        border-color: #e91222;
-    }
+    // .page-nav .page-btn:hover {
+    //     background-color: #e91222;
+    //     border-color: #e91222;
+    // }
 
-    .page-nav .page-btn:hover a {
-        color: #fff;
-    }
+    // .page-nav .page-btn:hover a {
+    //     color: #fff;
+    // }
 
-    .page-nav .skip-span {
-        margin: 0 30px;
-    }
+    // .page-nav .skip-span {
+    //     margin: 0 30px;
+    // }
 }
 </style>

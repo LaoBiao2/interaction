@@ -5,8 +5,8 @@
                 <div class="content">
                     <div class="title-box">
                         <div class="title-content">
-                            <b>{{dataList.new_title}}</b>
-                            <span><i></i>{{dataList.new_time}}</span>
+                            <b>{{detailList.new_title}}</b>
+                            <span><i></i>{{detailList.new_time}}</span>
                         </div>
                     </div>
                     <div class="news-box clearfix">
@@ -64,7 +64,7 @@
                                 <br/>
                                 尤其是客服管理者，在产生投诉的情况下，务必不能急躁，心态要平和。投诉既然已经产生，首要关注的问题应该是分析投诉原因，考虑如何进行有效的规避。而不是首先关注如何惩罚员工及投诉是不是能撤销。
                             </p> -->
-                            <div v-html="dataList.new_content" class="news-content"></div>
+                            <div v-html="detailList.new_content" class="news-content"></div>
                         </div>
                         <div class="fr">
                             <h6><b>热门推荐</b></h6>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="news-nav">
                         <span class="nav-span"><span>上一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavPrev.new_title}}</nuxt-link></span>
-                        <span class="nav-span"><span>下一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavNext.new_title}}</nuxt-link></span>
+                        <span class="nav-span"><span>下一篇:</span><nuxt-link :to="'/news/' + newsNavNext.id ">{{newsNavNext.new_title}}</nuxt-link></span>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,8 @@
         async asyncData({ app, params }) {
             let  data  = await app.$axios.$get('/api/news/' + params.id);
             return { 
-                dataList: data.detail,
+                dataList: data,
+                detailList: data.detail,
                 hotList: data.hot,
                 newsNavPrev: data.prev,
                 newsNavNext: data.next,
@@ -123,7 +124,9 @@
                     // id: '2',
                     // title: '呼叫中心如何正确衡量通话质量'
                 },
-                newsId: ''
+                newsId: '',
+                dataList: [],
+                detailList: ''
             }
         },
 		mounted() {
@@ -135,7 +138,8 @@
             });
             console.log(this.dataList)
 		},
-        method: {
+        head() {
+            return this.$seo(this.dataList.header.title, this.dataList.header.descriptions, this.dataList.header.keywords)
         },
 	};
 

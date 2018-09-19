@@ -4,15 +4,16 @@
 			<div class="banner">
                 <div v-swiper:bannerSwiper="swiperOption">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(banner, key) in 3" :key="key">
+                        <div class="swiper-slide" v-for="(banner, key) in bannerList" :key="key">
                             <div class="img-bg">
                                 <img src="~/assets/images/index/banner.jpg" alt="">
+                                <!-- <img :src="banner.ban_img" alt=""> -->
                             </div>
                             <div class="content">
                                 <div class="txt">
-                                    <h2><span>互动商务</span>满足你的一切需求{{key}}</h2>
-                                    <p>一站式服务更放心</p>
-                                    <a href="javascript:;">立即查看</a>
+                                    <h2><span>{{banner.ban_short_title}}</span>{{banner.ban_long_title}}</h2>
+                                    <p>{{banner.ban_text}}</p>
+                                    <a href="javascript:;">{{banner.ban_button}}</a>
                                 </div>
                             </div>
                         </div>
@@ -205,35 +206,21 @@
                         <div class="fl">
                             <div class="img-box"><img src="~/assets/images/index/b5_img.jpg" alt=""></div>
                             <div class="txt">
-                                <nuxt-link :to="'/news/' + 1"><span class="title-span"><i></i>10年客服老司机教你这样处理棘手的客户投诉</span></nuxt-link>
-                                <span class="time-span"><i></i>8月15日 周三 14:00-17:30</span>
+                                <nuxt-link :to="'/news/' + b5Items[1].id"><span class="title-span"><i></i>{{b5Items[1].new_title}}</span></nuxt-link>
+                                <span class="time-span"><i></i>{{b5Items[1].new_time}}</span>
                                 <p>
-                                    客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。
+                                    {{b5Items[1].new_descriptions}}
                                     <a href="javascript:;">查看更多</a>
                                 </p>
                             </div>
                         </div>
                         <div class="fr">
                             <ul>
-                                <li>
+                                <li v-for="(b5Item, index) in b5Items" :key="index" v-if="0 < index && index < 4">
                                     <a href="javascript:;">
-                                        <span class="title-span">服务外包业促粤港澳大湾区城市建设</span>
-                                        <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
-                                        <span class="time-span"><i></i>2018/06/20</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="title-span">呼叫中心管理者的六种角色</span>
-                                        <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
-                                        <span class="time-span"><i></i>2018/06/20</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="title-span">呼叫中心如何正确衡量通话质量</span>
-                                        <p>日前，2018全球服务外包大会在广东省珠海市举行。这是全球服务外包大会创办以来，首次落户粤港澳大湾区城市。本届大会以“开放协同，互联共享”为主</p>
-                                        <span class="time-span"><i></i>2018/06/20</span>
+                                        <span class="title-span">{{b5Item.new_title}}</span>
+                                        <p>{{b5Item.new_descriptions}}</p>
+                                        <span class="time-span"><i></i>{{b5Item.new_time}}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -247,12 +234,18 @@
 
 <script>
 	export default {
+        async asyncData({ app }) {
+            let  data  = await app.$axios.$get('/api');
+           
+            // console.log(data)
+            return { 
+                dataList: data, 
+                bannerList: data.banner_pc,
+                b5Items: data.information
+            }
+        },
         data() {
             return {
-                detail: {
-                    title: '',
-                    summary: ''
-                },
                 swiperOption: {
                     effect : 'fade',
                     pagination: '.swiper-pagination',
@@ -309,12 +302,38 @@
                                 + '* 专设服务回访和投诉小组，保证服务质量。<br/>'
                                 + '* 专业客服一对一服务。'
                     }
-                ] 
+                ],
+                bannerList: [],
+                dataList: [],
+                b5Items: []
             }
            
         },
+        // asyncData({ req, params }) {
+        //     // We can return a Promise instead of calling the callback
+        //     return axios.get('/api')
+        //     .then((res) => {
+        //         console.log(res);
+        //         return { 
+        //             dataList: res.data, 
+        //             bannerList: res.data.banner_pc 
+        //         }
+        //     })
+        // },
         head() {
-            return this.$seo(this.detail.title, this.detail.summary)
+            return this.$seo(this.dataList.header.title, this.dataList.header.descriptions, this.dataList.header.keywords)
+            // return {
+            //     title: this.dataList.header.title,
+            //     meta: [{
+            //         hid: 'description',
+            //         name: 'description',
+            //         content: this.dataList.header.descriptions
+            //     },{
+            //         hid: 'keywords',
+            //         name: 'keywords',
+            //         content: this.dataList.header.keywords
+            //     }]
+            // }
         },
 		mounted() {
             new WOW().init();
@@ -334,8 +353,6 @@
             //     'It will slideTo banners 3')
             // this.bannerSwiper.slideTo(0, 1000, false)
             // this.b2Swiper.slideTo(0, 1000, false)
-		},
-        method: {
         }
 	};
 

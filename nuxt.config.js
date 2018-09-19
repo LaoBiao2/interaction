@@ -47,9 +47,23 @@ module.exports = {
         })
     ]
   },
+  modules: [
+      '@nuxtjs/axios',
+      '@nuxtjs/proxy'
+  ],
+  proxy: [
+    [
+      '/api', 
+      { 
+        target: 'http://localhost:8082', // api主机
+        pathRewrite: { '^/api' : '/' }
+      }
+    ]
+  ],
   plugins: [
     { src: '~/plugins/swiper.js', ssr: false },
-    { src: '~/plugins/global.js' }
+    { src: '~/plugins/global.js' },
+    // { src: '~/plugins/axios.js' }
   ],
   css: [
     'swiper/dist/css/swiper.css'

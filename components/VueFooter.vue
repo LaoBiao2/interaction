@@ -6,6 +6,31 @@
 	</div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            comp: '',
+            addr: '',
+            copy: ''
+        }
+    },
+    mounted() {
+        this.$axios.get("/api")
+        .then((response) => {
+            // console.log(response);
+            this.comp = response.data.config.con_company;
+            this.addr = response.data.config.con_address;
+            this.copy = response.data.config.con_copyright;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+}
+</script>
+
+
 <style lang="scss">
 .VueFooter {
 	width: 100%;

@@ -127,6 +127,12 @@
 
 <script>
 	export default {
+        async asyncData({ app }) {
+            let  data  = await app.$axios.$get('/api/about');
+            return { 
+                dataList: data
+            }
+        },
         data() {
             return {
                 b1Content: '广州互动商业服务有限公司拥有十年呼叫中心外包经验，目前拥有位于深圳、东莞、武汉、成都、宿迁五个呼叫运营中心。能为客户提供多语种服务，如普通话、粤语、 英语、日语以及韩语，与多家大型企业缔结了长期合作伙伴关系。  互动商务致力于为企业提供客户关系管理，提升企业与客户的沟通效率，为企业带来极致的用户体验和提高客户满意度，为沟通创造价值是互动商务的企业愿景。一直以来互动商务以服务 用户为导向，遵循创新、卓越、极致的服务理念，为用户提供便捷、可靠、稳定的客服管理服务，让用户享受高效沟通带来的美好体验。'
@@ -157,6 +163,7 @@
                     nextButton: '.swiper-button-next',
                     prevButton: '.swiper-button-prev',
                     pagination: '.swiper-pagination',
+                    centeredSlides: true,
                 },
                 b3Items: [
                     {
@@ -196,7 +203,8 @@
                     slidesPerView: "auto",
                     spaceBetween: 74,
                     loop: true,
-                }
+                },
+                dataList: []
             }
            
         },
@@ -208,10 +216,9 @@
             $(".b2 ul li p a").click(function () {
                 $(this).parent().parent().toggleClass("up")
             })
-            // this.b3Swiper.slideTo(0, 1000, false)
-            // this.b4Swiper.slideTo(0, 1000, false)
 		},
-        method: {
+        head() {
+            return this.$seo(this.dataList.header.title, this.dataList.header.descriptions, this.dataList.header.keywords)
         },
 	};
 

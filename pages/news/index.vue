@@ -9,14 +9,14 @@
                             <ul>
                                 <li v-for="(newsLi, key) in newsList" :key="key" class="clearfix">
                                     <div class="img-box">
-                                        <nuxt-link :to="'/news/' + newsLi.newsId">
-                                            <img :src="newsLi.newsImg" alt="">
+                                        <nuxt-link :to="{name: 'news', params: {id: newsLi.id }}">
+                                            <img :src="newsLi.new_img" alt="">
                                         </nuxt-link>
                                     </div>
                                     <div class="txt">
-                                        <nuxt-link :to="'/news/' + newsLi.newsId"><b>{{newsLi.newsTitle}}</b></nuxt-link>
-                                        <nuxt-link :to="'/news/' + newsLi.newsId"><p>{{newsLi.newsContent}}</p></nuxt-link>
-                                        <span><i></i>{{newsLi.newsDate}}</span>
+                                        <nuxt-link :to="{name: 'news', params: {id: newsLi.id }}"><b>{{newsLi.new_title}}</b></nuxt-link>
+                                        <nuxt-link :to="{name: 'news', params: {id: newsLi.id }}"><p>{{newsLi.new_descriptions}}</p></nuxt-link>
+                                        <span><i></i>{{newsLi.new_time}}</span>
                                     </div>
                                 </li>
                             </ul>
@@ -25,8 +25,8 @@
                             <h6><b>热门推荐</b></h6>
                             <ul>
                                 <li v-for="(hotLi, key) in hotList" :key="key">
-                                    <nuxt-link :to="'/news/' + hotLi.hid">
-                                        <p>{{hotLi.htitle}}</p>
+                                    <nuxt-link :to="{name: 'news', params: { newsId: hotLi.id }}">
+                                        <p>{{hotLi.new_title}}</p>
                                     </nuxt-link>
                                 </li>
                             </ul>
@@ -66,56 +66,65 @@
 
 <script>
 	export default {
+        async asyncData({ app }) {
+            let  data  = await app.$axios.$get('/api/news');
+            return { 
+                dataList: data,
+                hotList: data.hot,
+                newsList: data.list
+            }
+        },
         data() {
             return {
                 newsList: [
-                    {
-                        newsImg: '/images/news/news_img1.jpg',
-                        newsId: '1',
-                        newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
-                        newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
-                        newsDate: '2018/06/20'
-                    },{
-                        newsImg: '/images/news/news_img2.jpg',
-                        newsId: '2',
-                        newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
-                        newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
-                        newsDate: '2018/06/20'
-                    },{
-                        newsImg: '/images/news/news_img3.jpg',
-                        newsId: '3',
-                        newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
-                        newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
-                        newsDate: '2018/06/20'
-                    },{
-                        newsImg: '/images/news/news_img4.jpg',
-                        newsId: '4',
-                        newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
-                        newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
-                        newsDate: '2018/06/20'
-                    },{
-                        newsImg: '/images/news/news_img5.jpg',
-                        newsId: '5',
-                        newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
-                        newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
-                        newsDate: '2018/06/20'
-                    }
+                    // {
+                    //     newsImg: '/images/news/news_img1.jpg',
+                    //     newsId: '1',
+                    //     newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
+                    //     newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
+                    //     newsDate: '2018/06/20'
+                    // },{
+                    //     newsImg: '/images/news/news_img2.jpg',
+                    //     newsId: '2',
+                    //     newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
+                    //     newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
+                    //     newsDate: '2018/06/20'
+                    // },{
+                    //     newsImg: '/images/news/news_img3.jpg',
+                    //     newsId: '3',
+                    //     newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
+                    //     newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
+                    //     newsDate: '2018/06/20'
+                    // },{
+                    //     newsImg: '/images/news/news_img4.jpg',
+                    //     newsId: '4',
+                    //     newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
+                    //     newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
+                    //     newsDate: '2018/06/20'
+                    // },{
+                    //     newsImg: '/images/news/news_img5.jpg',
+                    //     newsId: '5',
+                    //     newsTitle: '10年客服老司机教你这样处理棘手的客户投诉',
+                    //     newsContent: '客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。',
+                    //     newsDate: '2018/06/20'
+                    // }
                 ],
                 hotList: [
-                    {
-                        hid: '1',
-                        htitle: '10年客服老司机教你这样处理棘手的客户投诉'
-                    },{
-                        hid: '2',
-                        htitle: '服务外包业促粤港澳大湾区城市建设'
-                    },{
-                        hid: '3',
-                        htitle: '呼叫中心管理者的六种角色'
-                    },{
-                        hid: '4',
-                        htitle: '呼叫中心如何正确衡量通话质量'
-                    }
-                ]
+                    // {
+                    //     hid: '1',
+                    //     htitle: '10年客服老司机教你这样处理棘手的客户投诉'
+                    // },{
+                    //     hid: '2',
+                    //     htitle: '服务外包业促粤港澳大湾区城市建设'
+                    // },{
+                    //     hid: '3',
+                    //     htitle: '呼叫中心管理者的六种角色'
+                    // },{
+                    //     hid: '4',
+                    //     htitle: '呼叫中心如何正确衡量通话质量'
+                    // }
+                ],
+                dataList: []
             }
            
         },
@@ -128,7 +137,8 @@
                 $(this).parent().parent().toggleClass("up")
             })
 		},
-        method: {
+        head() {
+            return this.$seo(this.dataList.header.title, this.dataList.header.descriptions, this.dataList.header.keywords)
         },
 	};
 

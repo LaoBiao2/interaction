@@ -86,7 +86,20 @@
 
 <script>
 export default {
-    
+    async asyncData({ app }) {
+        let  data  = await app.$axios.$get('/api/service');
+        return { 
+            dataList: data
+        }
+    },
+    data() {
+        return {
+            dataList: []
+        }
+    },
+    head() {
+        return this.$seo(this.dataList.header.title, this.dataList.header.descriptions, this.dataList.header.keywords)
+    },
 };
 </script>
 

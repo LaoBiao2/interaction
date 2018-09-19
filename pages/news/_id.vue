@@ -77,8 +77,8 @@
                         </div>
                     </div>
                     <div class="news-nav">
-                        <span class="nav-span"><span>上一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavPrev.title}}</nuxt-link></span>
-                        <span class="nav-span"><span>下一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavNext.title}}</nuxt-link></span>
+                        <span class="nav-span"><span>上一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavPrev.new_title}}</nuxt-link></span>
+                        <span class="nav-span"><span>下一篇:</span><nuxt-link :to="'/news/' + newsNavPrev.id ">{{newsNavNext.new_title}}</nuxt-link></span>
                     </div>
                 </div>
             </div>
@@ -88,30 +88,39 @@
 
 <script>
 	export default {
+        async asyncData({ app }) {
+            let  data  = await app.$axios.$get('/api/news' + $route.params.newsId);
+            return { 
+                dataList: data,
+                hotList: data.hot,
+                newsNavPrev: data.prev,
+                newsNavNext: data.next,
+            }
+        },
         data() {
             return {
                 hotList: [
-                    {
-                        hid: '1',
-                        htitle: '10年客服老司机教你这样处理棘手的客户投诉'
-                    },{
-                        hid: '2',
-                        htitle: '服务外包业促粤港澳大湾区城市建设'
-                    },{
-                        hid: '3',
-                        htitle: '呼叫中心管理者的六种角色'
-                    },{
-                        hid: '4',
-                        htitle: '呼叫中心如何正确衡量通话质量'
-                    }
+                    // {
+                    //     hid: '1',
+                    //     htitle: '10年客服老司机教你这样处理棘手的客户投诉'
+                    // },{
+                    //     hid: '2',
+                    //     htitle: '服务外包业促粤港澳大湾区城市建设'
+                    // },{
+                    //     hid: '3',
+                    //     htitle: '呼叫中心管理者的六种角色'
+                    // },{
+                    //     hid: '4',
+                    //     htitle: '呼叫中心如何正确衡量通话质量'
+                    // }
                 ],
                 newsNavPrev: {
-                    id: '1',
-                    title: '服务外包业促粤港澳大湾区城市建设'
+                    // id: '1',
+                    // title: '服务外包业促粤港澳大湾区城市建设'
                 },
                 newsNavNext: {
-                    id: '2',
-                    title: '呼叫中心如何正确衡量通话质量'
+                    // id: '2',
+                    // title: '呼叫中心如何正确衡量通话质量'
                 },
             }
         },

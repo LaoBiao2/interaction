@@ -113,6 +113,12 @@
 
 <script>
 export default {
+    async asyncData({ app }) {
+        let  data  = await app.$axios.$get('/api/advantage');
+        return { 
+            dataList: data
+        }
+    },
     data(){
         return{
             advantageSwiper: {//swiper3
@@ -141,9 +147,11 @@ export default {
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
             },
+            dataList: []
         }
     },
-    computed: {
+    head() {
+        return this.$seo(this.dataList.header.title, this.dataList.header.descriptions, this.dataList.header.keywords)
     },
 }
 </script>
@@ -411,6 +419,7 @@ export default {
             // bottom: 100px;
             .swiper-pagination-bullet {
                 background-color: #fff;
+                line-height:36px;
             }
         }
     }

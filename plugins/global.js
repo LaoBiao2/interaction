@@ -2,13 +2,17 @@ import Vue from 'vue'
 
 Vue.mixin({
     methods: {
-        $seo(title, content, payload = []) {
+        $seo(title, description, keywords, payload = []) {
             return {
                 title,
                 meta: [{
                     hid: 'description',
                     name: 'description',
-                    content
+                    description, 
+                },{
+                    hid: 'keywords',
+                    name: 'keywords',
+                    keywords
                 }].concat(payload)
             }
         }

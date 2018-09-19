@@ -5,11 +5,14 @@
 				<nuxt-link to="/"><img src="~/assets/images/common/logo.png" alt=""></nuxt-link>
 			</div>
 			<ul>
-				<li><nuxt-link to="/">首页</nuxt-link></li>
+				<li v-for="(navLi, index) in navList" :key="index">
+                    <nuxt-link :to="navLi.nav_url">{{navLi.nav_title}}</nuxt-link>
+                </li>
+				<!-- <li><nuxt-link to="/">首页</nuxt-link></li>
 				<li><nuxt-link to="/service">产品服务</nuxt-link></li>
 				<li><nuxt-link to="/advantage">能力优势</nuxt-link></li>
 				<li><nuxt-link to="/news">新闻中心</nuxt-link></li>
-				<li><nuxt-link to="/about">关于我们</nuxt-link></li>
+				<li><nuxt-link to="/about">关于我们</nuxt-link></li> -->
 			</ul>
 		</div>
 	</div>
@@ -19,11 +22,20 @@
 	export default {
         data(){
             return {
+                navList: []
             }
         },
-		mounted() {
-		},
-        methods: {
+		methods: {
+        },
+        mounted() {
+            this.$axios.get("/api")
+            .then((response) => {
+                // console.log(response);
+                this.navList = response.data.nav;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
 	};
 

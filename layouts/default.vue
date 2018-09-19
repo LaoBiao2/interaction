@@ -1,6 +1,6 @@
 <template>
     <div>
-		<vue-header />
+		<vue-header/>
         <nuxt/>
 		<vue-footer />
   </div>
@@ -10,11 +10,16 @@
 import VueHeader from "~/components/VueHeader.vue";
 import VueFooter from "~/components/VueFooter.vue";
 export default {
-    
+    data() {
+        return {
+        }
+    },
     components: {
         VueHeader,
         VueFooter,
     },
+    mounted() {
+    }
 }
 </script>
 

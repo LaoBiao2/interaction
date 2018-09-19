@@ -9,13 +9,13 @@
                             <ul>
                                 <li v-for="(newsLi, key) in newsList" :key="key" class="clearfix">
                                     <div class="img-box">
-                                        <nuxt-link :to="{name: 'news', params: {id: newsLi.id }}">
+                                        <nuxt-link :to="'/news/' + newsLi.id">
                                             <img :src="newsLi.new_img" alt="">
                                         </nuxt-link>
                                     </div>
                                     <div class="txt">
-                                        <nuxt-link :to="{name: 'news', params: {id: newsLi.id }}"><b>{{newsLi.new_title}}</b></nuxt-link>
-                                        <nuxt-link :to="{name: 'news', params: {id: newsLi.id }}"><p>{{newsLi.new_descriptions}}</p></nuxt-link>
+                                        <nuxt-link :to="'/news/' + newsLi.id"><b>{{newsLi.new_title}}</b></nuxt-link>
+                                        <nuxt-link :to="'/news/' + newsLi.id"><p>{{newsLi.new_descriptions}}</p></nuxt-link>
                                         <span><i></i>{{newsLi.new_time}}</span>
                                     </div>
                                 </li>
@@ -25,7 +25,7 @@
                             <h6><b>热门推荐</b></h6>
                             <ul>
                                 <li v-for="(hotLi, key) in hotList" :key="key">
-                                    <nuxt-link :to="{name: 'news', params: { newsId: hotLi.id }}">
+                                    <nuxt-link :to="'/news/' + hotLi.id">
                                         <p>{{hotLi.new_title}}</p>
                                     </nuxt-link>
                                 </li>

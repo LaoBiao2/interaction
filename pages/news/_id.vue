@@ -5,13 +5,13 @@
                 <div class="content">
                     <div class="title-box">
                         <div class="title-content">
-                            <b>10年客服老司机教你这样处理棘手的客户投诉</b>
-                            <span><i></i>2018/06/20</span>
+                            <b>{{dataList.new_title}}</b>
+                            <span><i></i>{{dataList.new_time}}</span>
                         </div>
                     </div>
                     <div class="news-box clearfix">
                         <div class="fl">
-                            <p>
+                            <!-- <p>
                                 客户投诉处理是让每个客服头疼的问题，有着10年客户投诉处理实战经验的客服老司机，从一线客服和客服管理者两个维度，深度总结了3个关键点，7个行动点，帮助你轻松应对客户投诉。今天与大家分享。
                                 <br/>
                                 一线客服层面<br/>
@@ -63,14 +63,15 @@
                                 ❖情绪控制<br/>
                                 <br/>
                                 尤其是客服管理者，在产生投诉的情况下，务必不能急躁，心态要平和。投诉既然已经产生，首要关注的问题应该是分析投诉原因，考虑如何进行有效的规避。而不是首先关注如何惩罚员工及投诉是不是能撤销。
-                            </p>
+                            </p> -->
+                            <div v-html="dataList.new_content" class="news-content"></div>
                         </div>
                         <div class="fr">
                             <h6><b>热门推荐</b></h6>
                             <ul>
                                 <li v-for="(hotLi, key) in hotList" :key="key">
-                                    <nuxt-link :to="{ name: 'news', params: {id: hotLi.hid} }">
-                                        <p>{{hotLi.htitle}}</p>
+                                    <nuxt-link :to="'/news/' + hotLi.id">
+                                        <p>{{hotLi.new_title}}</p>
                                     </nuxt-link>
                                 </li>
                             </ul>
@@ -88,10 +89,10 @@
 
 <script>
 	export default {
-        async asyncData({ app }) {
-            let  data  = await app.$axios.$get('/api/news' + $route.params.newsId);
+        async asyncData({ app, params }) {
+            let  data  = await app.$axios.$get('/api/news/' + params.id);
             return { 
-                dataList: data,
+                dataList: data.detail,
                 hotList: data.hot,
                 newsNavPrev: data.prev,
                 newsNavNext: data.next,
@@ -122,16 +123,17 @@
                     // id: '2',
                     // title: '呼叫中心如何正确衡量通话质量'
                 },
+                newsId: ''
             }
         },
 		mounted() {
-            $(".b1 p a").click(function () {
-                $(".b1 .up").css("display", "block");
-                $(".b1 .more").css("display", "none");
-            })
-            $(".b2 ul li p a").click(function () {
-                $(this).parent().parent().toggleClass("up")
-            })
+            $(".news-box .news-content").find("span").attr("style", "");
+            $(".news-box .news-content").find("p,span").css({
+                'font-size': '14px',
+                'color': '#666',
+                'line-height': '32px'
+            });
+            console.log(this.dataList)
 		},
         method: {
         },
@@ -181,10 +183,13 @@
         border-bottom: 2px solid #e0e0e0;
         .fl {
             width: 827px;
-            p {
-                font-size: 14px;
-                color: #666;
-                line-height: 32px;
+            .news-content {
+                >>> p,span {
+                    font-size: 14px;
+                    color: #666;
+                    line-height: 32px;
+                }
+                
                 img {
                     display: block;
                     margin: 20px auto;

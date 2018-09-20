@@ -11,7 +11,7 @@
                 <input type="text" v-model="skipId"> 页
             </li>
             <li class="confirm-btn page-btn">
-                <a @click="btnCheck(skipId)">确认</a>
+                <a @click="btnClick(skipId)">确认</a>
             </li>
             <!-- <li class="page-all">共<i>{{all}}</i>页</li> -->
         </ul>
@@ -22,30 +22,30 @@
 export default {
     data() {
         return {
-            all: 20,
+            // all: 20,
             cur: 1,
             skipId: '',
-            bol: true
         }
+    },
+    props: {
+        all: ''
     },
     computed: {
         indexs: function(){
             var left = 1
             var right = this.all
             var ar = [] 
-            if (this.bol) {
-                if(this.all>= 7){
-                    if(this.cur > 3 && this.cur < this.all-2){
-                        left = this.cur - 3
-                        right = this.cur + 2
+            if(this.all>= 7){
+                if(this.cur > 3 && this.cur < this.all-2){
+                    left = this.cur - 3
+                    right = Number(this.cur) + 2
+                }else{
+                    if(this.cur<=3){
+                        left = 1
+                        right = 6
                     }else{
-                        if(this.cur<=3){
-                            left = 1
-                            right = 6
-                        }else{
-                            right = this.all
-                            left = this.all -5
-                        }
+                        right = this.all
+                        left = this.all -5
                     }
                 }
             }
@@ -69,23 +69,20 @@ export default {
         }
     },
     methods: {
-        btnClick: function(data){//页码点击事件
-            if(data != this.cur){
-                this.cur = data 
-            }
-        },
-        btnCheck(data) {
+        btnClick: function(i){
+            let data = Number(i);
             if (data > 0 && data <= this.all) {
                 if(data != this.cur){
                     this.cur = data;
-                    this.bol = false;
                 }
             }
         }
     },
     watch: {
         cur: function(oldValue , newValue){
-            console.log(arguments)
+            console.log(arguments);
+            this.$emit('skip', arguments[0]);
+            this.skipId = '';
         }
     }
 }

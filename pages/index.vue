@@ -6,8 +6,8 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(banner, key) in bannerList" :key="key">
                             <div class="img-bg">
-                                <img src="~/assets/images/index/banner.jpg" alt="">
-                                <!-- <img :src="banner.ban_img" alt=""> -->
+                                <!-- <img src="~/assets/images/index/banner.jpg" alt=""> -->
+                                <img :src="dataList.config.con_prefix + banner.ban_img" alt="">
                             </div>
                             <div class="content">
                                 <div class="txt">

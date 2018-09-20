@@ -10,7 +10,7 @@
                                 <li v-for="(newsLi, key) in newsList" :key="key" class="clearfix">
                                     <div class="img-box">
                                         <nuxt-link :to="'/news/' + newsLi.id">
-                                            <img :src="'http://192.168.1.30:8082' + newsLi.new_img" alt="">
+                                            <img :src="dataList.config.con_prefix + newsLi.new_img" alt="">
                                         </nuxt-link>
                                     </div>
                                     <div class="txt">
@@ -58,7 +58,7 @@
                             <a href="javascript:;">确认</a>
                         </span>
                     </div> -->
-                    <news-page></news-page>
+                    <news-page :all="Math.ceil(dataList.totalCount/5)" @skip="skip"></news-page>
                 </div>
             </div>
 		</div>
@@ -73,7 +73,7 @@ import NewsPage from '~/components/NewsPage.vue'
             return { 
                 dataList: data,
                 hotList: data.hot,
-                newsList: data.list
+                newsList: data.list,
             }
         },
         data() {
@@ -126,24 +126,31 @@ import NewsPage from '~/components/NewsPage.vue'
                     //     htitle: '呼叫中心如何正确衡量通话质量'
                     // }
                 ],
-                dataList: []
+                dataList: [],
             }
         },
         components: {
             NewsPage
         },
 		mounted() {
-            $(".b1 p a").click(function () {
-                $(".b1 .up").css("display", "block");
-                $(".b1 .more").css("display", "none");
-            })
-            $(".b2 ul li p a").click(function () {
-                $(this).parent().parent().toggleClass("up")
-            })
+            // console.log(Math.ceil(this.dataList.totalCount/5))
+            
 		},
         head() {
             return this.$seo(this.dataList.header.title, this.dataList.header.descriptions, this.dataList.header.keywords)
         },
+        methods: {
+            skip(i) {
+                this.$axios.get("/api/news/page_" + i)
+                .then((response) => {
+                    // console.log(response);
+                    this.newsList = response.data.list;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+        }
 	};
 
 </script>

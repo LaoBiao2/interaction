@@ -2,7 +2,7 @@
 	<div class="VueHeader">
 		<div class="content clearfix">
 			<div class="logo">
-				<nuxt-link to="/"><img src="~/assets/images/common/logo.png" alt=""></nuxt-link>
+				<nuxt-link to="/"><img :src="logoUrl" alt=""></nuxt-link>
 			</div>
 			<ul>
 				<li v-for="(navLi, index) in navList" :key="index">
@@ -22,7 +22,8 @@
 	export default {
         data(){
             return {
-                navList: []
+                navList: [],
+                logoUrl: ''
             }
         },
 		methods: {
@@ -32,6 +33,7 @@
             .then((response) => {
                 // console.log(response);
                 this.navList = response.data.nav;
+                this.logoUrl = response.data.config.con_prefix + response.data.config.con_logo;
             })
             .catch(function (error) {
                 console.log(error);

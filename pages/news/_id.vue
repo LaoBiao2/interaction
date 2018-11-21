@@ -131,11 +131,11 @@
         },
 		mounted() {
             $(".news-box .news-content").find("span").attr("style", "");
-            $(".news-box .news-content").find("p,span").css({
-                'font-size': '14px',
-                'color': '#666',
-                'line-height': '32px'
-            });
+            // $(".news-box .news-content").find("p,span").css({
+            //     'font-size': '14px',
+            //     'color': '#666',
+            //     'line-height': '32px'
+            // });
             console.log(this.dataList)
 		},
         head() {
@@ -188,7 +188,7 @@
         .fl {
             width: 827px;
             .news-content {
-                >>> p,span {
+                p,span {
                     font-size: 14px;
                     color: #666;
                     line-height: 32px;
@@ -273,3 +273,22 @@
     }
 }
 </style>
+
+<style lang="scss">
+.news {
+    .news-content {
+            p,span {
+                font-size: 14px !important;
+                color: #666 !important;
+                line-height: 32px !important;
+            }
+            
+            img {
+                display: block !important;
+                margin: 20px auto !important;
+            }
+        }
+    }
+}
+</style>
+
